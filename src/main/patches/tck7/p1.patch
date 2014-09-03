@@ -1,0 +1,17 @@
+Index: jee7tck-mods/etc/standalone-full.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- jee7tck-mods/etc/standalone-full.xml	(revision 4195)
++++ jee7tck-mods/etc/standalone-full.xml	(revision )
+@@ -1522,6 +1522,9 @@
+ 
+                    <!-- For Servlet TCK tests which need "*" permissions (which also covers EE JPA/Batch TCK tests) -->
+                    <permission class="java.util.PropertyPermission" name="*" actions="read" />
++
++                   <!--For the JMS TCK needed for access to the tx object store store-->
++                  <permission class="java.io.FilePermission" name="${env.JBOSS_HOME}/standalone/data/-" actions="read" />
+                </minimum-set>
+            </deployment-permissions>
+         </subsystem>

@@ -1,0 +1,17 @@
+Index: jee7tck-mods/etc/standalone-full.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- jee7tck-mods/etc/standalone-full.xml	(revision 4195)
++++ jee7tck-mods/etc/standalone-full.xml	(revision )
+@@ -1520,6 +1520,9 @@
+                    <permission class="java.io.FilePermission" name="${env.JAVAEE_HOME_RI}/-" actions="read" />
+                    <permission class="java.io.FilePermission" name="${env.JBOSS_HOME}/standalone/log/-" actions="read" />
+ 
++                   <!--the TCK needs this open so it can connect back to the harness, see com.sun.ts.lib.util.TestUtil-->
++                   <permission class="java.net.SocketPermission" name="${harness.host}:${harness.log.port:2000}" actions="connect,resolve" />
++
+                    <!-- For Servlet TCK tests which need "*" permissions (which also covers EE JPA/Batch TCK tests) -->
+                    <permission class="java.util.PropertyPermission" name="*" actions="read" />
+                </minimum-set>
